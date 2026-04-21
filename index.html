@@ -58,10 +58,34 @@
             animation: fadeUp 0.5s ease forwards;
         }
 
+        /* Header area with profile image */
         .case-header {
-            padding: 56px 0 32px;
+            padding: 48px 0 32px;
             border-bottom: 1px solid var(--border);
             margin-bottom: 48px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        .profile-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.2s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.02);
         }
 
         .badge {
@@ -284,6 +308,37 @@
             font-size: 0.85rem;
         }
 
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--accent);
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-md);
+            z-index: 100;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent-warm);
+            transform: translateY(-3px);
+        }
+
         @media (max-width: 768px) {
             .container { padding: 0 20px; }
             h1 { font-size: 2.2rem; }
@@ -291,6 +346,7 @@
             .final-note { padding: 28px 24px; }
             .card-grid { gap: 20px; }
             .section { margin-bottom: 56px; }
+            .case-header { flex-direction: column; align-items: flex-start; }
         }
 
         @media (max-width: 480px) {
@@ -304,18 +360,21 @@
             .card, .insight-block { break-inside: avoid; }
             .pillar { border: 1px solid #ccc; background: none; }
             .final-note { background: #f5f5f5; }
+            .back-to-top { display: none; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="case-header">
-            <div class="badge">CONFIDENTIAL CASE STUDY — EXECUTION SYSTEMS</div>
-            <h1>From activity to coordinated progress:<br>Structuring execution across multiple workstreams</h1>
-            <div class="framing-line">This is how I take control of execution in a multi-workstream environment from Day 1.</div>
-            <!-- NEW: Pressure signal line -->
-            <div class="ambiguity-line">I operate comfortably in ambiguity — I do not wait for perfect information to move execution forward.</div>
-            <div class="subhead">How I diagnose ambiguity, enforce ownership, and build a rhythm of accountability — without adding complexity.</div>
+            <div class="header-content">
+                <div class="badge">CONFIDENTIAL CASE STUDY — EXECUTION SYSTEMS</div>
+                <h1>From activity to coordinated progress:<br>Structuring execution across multiple workstreams</h1>
+                <div class="framing-line">This is how I take control of execution in a multi-workstream environment from Day 1.</div>
+                <div class="ambiguity-line">I operate comfortably in ambiguity — I do not wait for perfect information to move execution forward.</div>
+                <div class="subhead">How I diagnose ambiguity, enforce ownership, and build a rhythm of accountability — without adding complexity.</div>
+            </div>
+            <img src="abu.jpg" alt="Abraham Otieno" class="profile-image">
         </div>
 
         <!-- 1. Situation understanding -->
@@ -458,5 +517,29 @@
             <p style="margin-top: 12px;">© 2025 · Case study based on real implementation framework</p>
         </div>
     </div>
+
+    <a href="#" class="back-to-top" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Back to top button visibility and smooth scroll
+            const backToTop = document.querySelector('.back-to-top');
+            if (backToTop) {
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTop.classList.add('visible');
+                    } else {
+                        backToTop.classList.remove('visible');
+                    }
+                });
+                backToTop.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
