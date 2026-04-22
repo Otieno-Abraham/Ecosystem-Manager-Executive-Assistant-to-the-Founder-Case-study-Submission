@@ -49,6 +49,32 @@
             padding: 0 24px;
         }
 
+        /* Back to Portfolio Button */
+        .back-button {
+            margin-top: 24px;
+            margin-bottom: 0;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface-1);
+            color: var(--accent);
+            padding: 8px 18px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border);
+        }
+
+        .back-btn:hover {
+            background: var(--accent-soft);
+            transform: translateX(-4px);
+        }
+
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
@@ -60,7 +86,7 @@
 
         /* Header area with profile image */
         .case-header {
-            padding: 48px 0 32px;
+            padding: 32px 0 32px;
             border-bottom: 1px solid var(--border);
             margin-bottom: 48px;
             display: flex;
@@ -361,11 +387,20 @@
             .pillar { border: 1px solid #ccc; background: none; }
             .final-note { background: #f5f5f5; }
             .back-to-top { display: none; }
+            .back-button { display: none; }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Back to Portfolio Button -->
+        <div class="back-button">
+            <a href="/portfolio" class="back-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to Portfolio
+            </a>
+        </div>
+
         <div class="case-header">
             <div class="header-content">
                 <div class="badge">CONFIDENTIAL CASE STUDY — EXECUTION SYSTEMS</div>
